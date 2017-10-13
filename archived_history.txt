@@ -1,0 +1,49 @@
+commit 5b50ce3b29f7724fd281c14454e026db47c7d990
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue May 30 20:10:08 2017 +0000
+
+    handle new SLCP dataset name scheme
+
+commit 84a0971c33168cb26c499f33f050642225badcef
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Apr 11 22:18:29 2017 +0000
+
+    move product to final prod dir
+
+commit 51a646da9ccf96e15861d99390f91c096d1cbc74
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Apr 11 21:49:53 2017 +0000
+
+    fix checking of pre-existing product
+
+commit 103dde0d43c2b4e3aaf2420fab7f3eaa1c40927c
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Apr 11 21:11:47 2017 +0000
+
+    clean up imports; fix typo
+
+commit f584cf6935bbba137d59864f927baf6b1cda831e
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Apr 11 20:51:52 2017 +0000
+
+    initial implementation of PGE wrapper
+
+commit 43239dd0f911294c5d793a3d3481c0a8a9011bf4
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Apr 11 18:57:33 2017 +0000
+
+    initial updates for running in docker container
+    
+    Generalize determination of location of binaries and scripts.
+
+commit 523c1635f20547802a3c33160f48a906c9bd73cd
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Apr 11 17:30:53 2017 +0000
+
+    update path
+
+commit 1ef27601c146c8043e392b574b5b220d577bbfff
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Apr 11 17:29:50 2017 +0000
+
+    initial import

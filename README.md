@@ -8,3 +8,7 @@
 ```
 2. set environment variables. see set_env_variable.sh for details
 3. Then modify slcp2lar_S1.sh and run it.
+
+## Authors
+
+* **Sang-Ho Yun** - *initial work*

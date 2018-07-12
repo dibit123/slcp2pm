@@ -42,7 +42,8 @@ def check_lar(es_url, es_index, id):
         print("Failed to query %s:\n%s" % (es_url, r.text), file=sys.stderr)
         print("query: %s" % json.dumps(query, indent=2), file=sys.stderr)
         print("returned: %s" % r.text, file=sys.stderr)
-    r.raise_for_status()
+    if r.status_code == 404: return 0, 'NONE'
+    else: r.raise_for_status()
     result = r.json()
     pprint(result)
     total = result['hits']['total']

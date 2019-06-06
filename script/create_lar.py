@@ -17,6 +17,8 @@ BASE_PATH = os.path.dirname(__file__)
 
 MISSION_RE = re.compile(r'^(S1\w)_')
 SLCP_RE = re.compile(r'S1-SLCP_(.+_s(\d)-.+?)-(v.+)$')
+RLKS = 7
+ALKS = 2
 
 
 def create_met_json(id, version, slcp_met_file, met_file):
@@ -30,6 +32,9 @@ def create_met_json(id, version, slcp_met_file, met_file):
     md['dataset_type'] = "log_amp_ratio"
     md['product_type'] = "log_amp_ratio"
     md['archive_filename'] = id
+    md['range_looks'] = RLKS
+    md['azimuth_looks'] = ALKS
+
 
     # write out met json
     with open(met_file, 'w') as f:
@@ -115,7 +120,7 @@ def main(slcp_dir):
         return 0
 
     # generate log amp ratio
-    lar_cmd = [ "{}/slcp2lar_S1.sh".format(BASE_PATH), slcp_dir, swath ]
+    lar_cmd = [ "{}/slcp2lar_S1.sh".format(BASE_PATH), slcp_dir, swath, RLKS, ALKS]
     lar_cmd_line = " ".join(lar_cmd)
     logger.info("Calling slcp2lar_S1.sh: {}".format(lar_cmd_line))
     check_call(lar_cmd_line, shell=True)

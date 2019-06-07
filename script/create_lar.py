@@ -120,7 +120,7 @@ def main(slcp_dir):
         return 0
 
     # generate log amp ratio
-    lar_cmd = [ "{}/slcp2lar_S1.sh".format(BASE_PATH), slcp_dir, swath, RLKS, ALKS]
+    lar_cmd = [ "{}/slcp2lar_S1.sh".format(BASE_PATH), slcp_dir, swath, str(RLKS), str(ALKS)]
     lar_cmd_line = " ".join(lar_cmd)
     logger.info("Calling slcp2lar_S1.sh: {}".format(lar_cmd_line))
     check_call(lar_cmd_line, shell=True)

@@ -17,11 +17,8 @@ BASE_PATH = os.path.dirname(__file__)
 
 MISSION_RE = re.compile(r'^(S1\w)_')
 SLCP_RE = re.compile(r'S1-SLCP_(.+_s(\d)-.+?)-(v.+)$')
-RLKS = 7
-ALKS = 2
 
-
-def create_met_json(id, version, slcp_met_file, met_file):
+def create_met_json(id, version, ctx, slcp_met_file, met_file):
     """Write met json."""
 
     # get metadata
@@ -32,8 +29,8 @@ def create_met_json(id, version, slcp_met_file, met_file):
     md['dataset_type'] = "log_amp_ratio"
     md['product_type'] = "log_amp_ratio"
     md['archive_filename'] = id
-    md['range_looks'] = RLKS
-    md['azimuth_looks'] = ALKS
+    md['range_looks'] = ctx["lar_range_looks"]
+    md['azimuth_looks'] = ctx["lar_azimuth_looks"]
 
 
     # write out met json
@@ -74,6 +71,10 @@ def call_noerr(cmd):
         logger.warn("Got exception running {}: {}".format(cmd, str(e)))
         logger.warn("Traceback: {}".format(traceback.format_exc()))
 
+def load_context():
+    with open('_context.json') as data_file:
+        data = json.load(data_file)
+        return data
 
 def main(slcp_dir):
     """HySDS PGE wrapper for log_amp_ratio generation."""
@@ -119,8 +120,10 @@ def main(slcp_dir):
         except: pass
         return 0
 
+    ctx = load_context()
+
     # generate log amp ratio
-    lar_cmd = [ "{}/slcp2lar_S1.sh".format(BASE_PATH), slcp_dir, swath, str(RLKS), str(ALKS)]
+    lar_cmd = [ "{}/slcp2lar_S1.sh".format(BASE_PATH), slcp_dir, swath, str(ctx["lar_range_looks"]), str(ctx["lar_azimuth_looks"])]
     lar_cmd_line = " ".join(lar_cmd)
     logger.info("Calling slcp2lar_S1.sh: {}".format(lar_cmd_line))
     check_call(lar_cmd_line, shell=True)
@@ -132,7 +135,7 @@ def main(slcp_dir):
     call_noerr("mv -f s{}/* {}/".format(swath, prod_dir))
 
     # generate met and dataset JSON
-    create_met_json(id, version, slcp_met_file, met_file)
+    create_met_json(id, version, ctx, slcp_met_file, met_file)
     create_dataset_json(id, version, slcp_ds_file, ds_file)
     
     # clean out SLCP prod

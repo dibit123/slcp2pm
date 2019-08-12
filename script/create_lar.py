@@ -33,6 +33,7 @@ def create_met_json(id, version, ctx, slcp_met_file, met_file):
     md['azimuth_looks'] = ctx["lar_azimuth_looks"]
 
 
+
     # write out met json
     with open(met_file, 'w') as f:
         json.dump(md, f, indent=2, sort_keys=True)

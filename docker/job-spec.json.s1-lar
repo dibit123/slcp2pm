@@ -1,0 +1,37 @@
+{
+  "command":"/home/ops/verdi/ops/slcp2pm/script/create_lar.sh",
+  "imported_worker_files": {
+    "$HOME/.netrc": "/home/ops/.netrc",
+    "$HOME/.aws": "/home/ops/.aws",
+    "$HOME/verdi/etc/settings.conf": "/home/ops/verdi/ops/slcp2pm/conf/settings.conf"
+
+  },
+  "recommended-queues" : [
+    "grfn-job_worker-large",
+    "aria-job_worker-large",
+    "mem-job_worker-large",
+    "dwr-job_worker-large",
+    "chevron-job_worker-small",
+    "floodmap-job_worker-small",
+    "urgent-response-job_worker-large"
+  ],
+  "disk_usage":"100GB",
+  "params" : [
+    { 
+      "name": "localize_url",
+      "destination": "localize"
+    },
+    {
+      "name": "path",
+      "destination": "positional"
+    },
+    {
+      "name": "lar_range_looks",
+      "destination": "context"
+    },
+    {
+      "name": "lar_azimuth_looks",
+      "destination": "context"
+    }
+  ]
+}

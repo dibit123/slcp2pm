@@ -25,7 +25,6 @@ BIN_PATH = os.path.join(os.path.dirname(SCR_PATH), "src")
 
 
 def runCmd(cmd):
-    
     print("{}".format(cmd))
     #status = os.system(cmd)
     status = check_call(cmd, shell=True)
@@ -146,7 +145,6 @@ if __name__ == '__main__':
             print('no matching slave burst found, skip this burst')
             continue
 
-
         amp = 'amp_%02d.amp' % (i+1)
         # cmd = "imageMath.py -e='(real(a)!=0)*(real(b)!=0)*(imag(a)!=0)*(imag(b)!=0)*sqrt(real(a)*real(a)+imag(a)*imag(a));(real(a)!=0)*(real(b)!=0)*(imag(a)!=0)*(imag(b)!=0)*sqrt(real(b)*real(b)+imag(b)*imag(b))' --a={} --b={} -o {} -t float -s BIP".format(
         #     mbursts[i],
@@ -252,6 +250,7 @@ if __name__ == '__main__':
         flag = np.zeros((length_looked, width_looked), dtype=np.float)
         delta = 3
         flag[upper_edge + delta:lower_edge - delta, left_edge + delta:right_edge - delta] = 1.0
+        logr_looked_data *= flag
 
         logr_looked_data.astype(np.float32).tofile(logr_looked)
         create_xml(logr_looked, width_looked, length_looked, 'float')
@@ -286,7 +285,8 @@ if __name__ == '__main__':
             amp_looked_geo,
             lat_looked,
             lon_looked,
-            bbox,inps.ssize,
+            bbox,
+            inps.ssize,
             1)
         runCmd(cmd)
 

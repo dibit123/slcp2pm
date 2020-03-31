@@ -31,7 +31,8 @@ _Note: Since SLCP:LAR is 1:1, the pairing of SLCPs is **not required** to make L
 ##### Notes on S1 Log Amplitude Ratio
 The LARs in this PGE computed as such (from `log_ratio.py`):
 
-* From dataset `v2.0` onwards:
+* (**Latest**) From dataset `v2.0` onwards:
+
     ![formula](https://render.githubusercontent.com/render/math?math=LAR=\log_{10}{\frac{A_{post-event}}{A_{pre-event}}})
     ![formula](https://render.githubusercontent.com/render/math?math==\log_{10}{\frac{A_{slave}}{A_{master}}})
     
@@ -40,6 +41,7 @@ The LARs in this PGE computed as such (from `log_ratio.py`):
     => Negative values / darker pixels corresponds to decreased amplitudes in the post-event scene and possible open-water flood.
 
 * Before dataset `v2.0` (`v1.x` etc):
+
     ![formula](https://render.githubusercontent.com/render/math?math=LAR=\log_{10}{\frac{A_{pre-event}}{A_{post-event}}})
     ![formula](https://render.githubusercontent.com/render/math?math==\log_{10}{\frac{A_{master}}{A_{slave}}})
     

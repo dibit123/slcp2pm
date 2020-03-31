@@ -45,7 +45,7 @@ The LARs in this PGE computed as such (from `log_ratio.py`):
     
     where _A_ = Amplitudes of SLCs of the given date in the co-registered SLCPs
     
-    => Positive values / brigher pixels corresponds to decreased amplitudes in the post-event scene and possible open-water flood.
+    => Positive values / brighter pixels corresponds to decreased amplitudes in the post-event scene and possible open-water flood.
 
 
 ### How to use the raw code for standalone use

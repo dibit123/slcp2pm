@@ -1,8 +1,8 @@
-### slcp2pm(lar)
+### slcp2pm (LAR)
 
 #### SLC Pair to Log Amplitude Ratio
 
-This repository contains jobs to convert S1-SLCP products to Log Amplitude Ratios (LARs) for creating Flood Proxy Maps v1 (FPMv1)
+This repository contains jobs to convert S1-SLCP products to Log Amplitude Ratios (LARs) for creating Flood Proxy Maps v1 (FPMv1).
 
 A LAR is created based on the below pairing system, using 2 SLCs --> 1 SLCP --> 1 FPM:
 ![image](https://user-images.githubusercontent.com/6346909/77985672-9f6cea00-7304-11ea-807d-861833d4b1a3.png)
@@ -12,7 +12,7 @@ _Note: Since SLCP:LAR is 1:1, the pairing of SLCPs is **not required** to make L
 
 ### Job 1: S1 Log Amplitude Ratio
 - Type: **Iterative**
-- Facet: **SLCPs to extract LARs from**
+- Facet: **SLCPs to create LARs from**
 - User inputs:
 
     | Fields        | Description   | Type  |Example  |
@@ -29,7 +29,7 @@ _Note: Since SLCP:LAR is 1:1, the pairing of SLCPs is **not required** to make L
 
 
 ##### Notes on S1 Log Amplitude Ratio
-The LARs in this PGE computed as such (from `log_ratio.py`):
+The LARs in this PGE are computed as such (from `log_ratio.py`):
 
 * (**Latest**) From dataset `v2.0` onwards:
 
@@ -38,7 +38,7 @@ The LARs in this PGE computed as such (from `log_ratio.py`):
     
     where _A_ = Amplitudes of SLCs of the given date in the co-registered SLCPs
     
-    => Negative values / darker pixels corresponds to decreased amplitudes in the post-event scene and possible open-water flood.
+    => Negative values / darker pixels correspond to decreased amplitudes in the post-event scene and possible open-water flood.
 
 * Before dataset `v2.0` (`v1.x` etc):
 
@@ -47,18 +47,18 @@ The LARs in this PGE computed as such (from `log_ratio.py`):
     
     where _A_ = Amplitudes of SLCs of the given date in the co-registered SLCPs
     
-    => Positive values / brighter pixels corresponds to decreased amplitudes in the post-event scene and possible open-water flood.
+    => Positive values / brighter pixels correspond to decreased amplitudes in the post-event scene and possible open-water flood.
 
 
 ### How to use the raw code for standalone use
 
 **How to create log amplitude ratio images from ARIA SLC_PAIR products:**
 
-1. go to src
+1. Go to src.
 ```
    ./compile.sh
 ```
-2. set environment variables. see set_env_variable.sh for details
+2. Set environment variables. See set_env_variable.sh for details.
 3. Then modify slcp2lar_S1.sh and run it.
 
 ### Authors
